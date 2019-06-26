@@ -67,22 +67,6 @@
                 ></v-textarea>
               </v-flex>
             </v-layout>
-<!--             <v-layout>
-              <v-flex xs2 md2>
-                <v-switch
-                  label="PubMed"
-                  v-model="isPubmed">
-                </v-switch>
-              </v-flex>
-              <v-flex xs3 md1>
-                <v-text-field
-                  label="PMID"
-                  v-model="pmid"
-                ></v-text-field>
-              </v-flex>
-            </v-layout> -->
-<!--             <v-layout row fill-height>
-            </v-layout> -->
             <v-layout>
                 <v-btn
                   v-on:click="postData"
@@ -115,7 +99,7 @@
             </v-tab>
             <v-tab-item> -->
             <v-layout xs6 md6 mt-3 mb-5>
-<!--               <div style="width: 80%">
+              <!-- <div style="width: 80%">
                 <graph v-bind:graph_data="graph_data" v-if="graph_data && error === null"></graph>
               </div> -->
             </v-layout>
@@ -429,7 +413,8 @@ export default {
       this.loading = true;
       const payload = {
         text: this.input,
-        named_entities: true,
+        named_entities: false,
+        // named_entities: true,
         pmid: this.pmid,
         detect_valence: true,
         func_rels: true,
@@ -438,8 +423,8 @@ export default {
         resolve_acros: true,
       };
       // eslint-disable-next-line
-      // const path = 'http://localhost:5000/api';
-      const path = 'https://shrouded-cove-62384.herokuapp.com/api';
+      const path = 'http://localhost:5000/api';
+      // const path = 'https://shrouded-cove-62384.herokuapp.com/api';
       axios.post(path, payload)
         .then((res) => {
           // eslint-disable-next-line
